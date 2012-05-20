@@ -11,7 +11,7 @@ class postgresql::server (
     ensure  => present,
   }
 
-  file { "postgresql-server-$version-config":
+  file { "postgresql-server-config-$version":
     name    => "/etc/postgresql/$version/main/postgresql.conf",
     ensure  => present,
     content => template('postgresql/postgresql.conf'),
