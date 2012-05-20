@@ -1,6 +1,8 @@
 class postgresql::server (
   $server_package = $postgresql::params::server_package,
-  $version = $postgresql::params::version
+  $version = $postgresql::params::version,
+  $listen = $postgresql::params::listen_address,
+  $port = $postgresql::params::port
 
 ) inherits postgresql::params {
 
