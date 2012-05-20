@@ -11,6 +11,16 @@ class postgresql::server (
     ensure  => present,
   }
 
+  service { "postgresql-system-$version":
+    name        => 'postgresql',
+    enable      => true,
+    ensure      => running,
+    hasstatus   => false,
+    hasrestart  => true,
+    provider    => 'debian',
+    subscribe   => Package["postgresql-server-$version"],
+  }
+
   file { "postgresql-server-config-$version":
     name    => "/etc/postgresql/$version/main/postgresql.conf",
     ensure  => present,
@@ -19,6 +29,7 @@ class postgresql::server (
     group   => 'postgres',
     mode    => '0644',
     require => Package["postgresql-server-$version"],
+    notify  => Service["postgresql-system-$version"],
   }
 
 }
