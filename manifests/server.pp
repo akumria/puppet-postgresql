@@ -14,7 +14,7 @@ class postgresql::server (
   file { "postgresql-server-$version-config":
     name    => "/etc/postgresql/$version/main/postgresql.conf",
     ensure  => present,
-    content => template(postgresql.conf),
+    content => template('postgresql/postgresql.conf'),
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
