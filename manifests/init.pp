@@ -5,8 +5,8 @@ class postgresql (
 ) inherits postgresql::params {
 
   package { "postgresql-client-$version":
-    name   => "$client_package-$version",
-    ensure => present,
+    name    => sprintf("%s-%s", $client_package, $version),
+    ensure  => present,
   }
 
 }

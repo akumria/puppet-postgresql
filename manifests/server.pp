@@ -7,7 +7,7 @@ class postgresql::server (
 ) inherits postgresql::params {
 
   package { "postgresql-server-$version":
-    name    => "$server_package-$version",
+    name    => sprintf("%s-%s", $server_package, $version),
     ensure  => present,
   }
 
