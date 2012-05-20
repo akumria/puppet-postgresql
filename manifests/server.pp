@@ -18,7 +18,7 @@ class postgresql::server (
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    require => Package[postgresql-server-$version],
+    require => Package["postgresql-server-$version"],
   }
 
 }
