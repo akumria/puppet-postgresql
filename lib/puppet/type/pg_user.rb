@@ -1,5 +1,5 @@
 # This has to be a separate type to enable collecting
-Puppet::Type.newtype(:database_user) do
+Puppet::Type.newtype(:pg_user) do
   @doc = "Manage a database user/role."
 
   ensurable
@@ -8,7 +8,7 @@ Puppet::Type.newtype(:database_user) do
     desc "The name of the user/role"
   end
 
-  newparam(:createdb) do
+  newproperty(:createdb) do
     desc "Is the user allowed to create databases."
 
     defaultto :false
@@ -17,7 +17,7 @@ Puppet::Type.newtype(:database_user) do
     newvalue(:false)
   end
 
-  newparam(:inherit) do
+  newproperty(:inherit) do
     desc "Inherit privileges of roles this user/role is a member of."
 
     defaultto :true
@@ -26,7 +26,7 @@ Puppet::Type.newtype(:database_user) do
     newvalue(:false)
   end
 
-  newparam(:login) do
+  newproperty(:login) do
     desc "Can the user/role/ login?"
 
     defaultto :true
@@ -35,7 +35,7 @@ Puppet::Type.newtype(:database_user) do
     newvalue(:false)
   end
 
-  newparam(:createrole) do
+  newproperty(:createrole) do
     desc "Can the user/role create other users/roles?"
 
     defaultto :false
@@ -44,7 +44,7 @@ Puppet::Type.newtype(:database_user) do
     newvalue(:false)
   end
 
-  newparam(:superuser) do
+  newproperty(:superuser) do
     desc "Is the user/role a superuser?"
 
     defaultto :false
