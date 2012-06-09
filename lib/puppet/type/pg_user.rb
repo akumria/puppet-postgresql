@@ -8,6 +8,10 @@ Puppet::Type.newtype(:pg_user) do
     desc "The name of the user/role"
   end
 
+  newproperty(:password) do
+		desc "The password for the user/role"
+  end
+
   newproperty(:createdb) do
     desc "Is the user allowed to create databases."
 
