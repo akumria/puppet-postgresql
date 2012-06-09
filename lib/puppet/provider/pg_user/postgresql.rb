@@ -8,11 +8,11 @@ Puppet::Type.type(:pg_user).provide(:debian_postgresql) do
   optional_commands :su => 'su'
 
   def create
-    return false
+    su("-", "postgres", "-c", "psql -c \"create role %s encrypted password '%s'\"" % [ @resource.value(:name), @resource.value(:password) ])
   end
 
   def destroy
-    return false
+    fail('not yet done')
   end
 
   def exists?
