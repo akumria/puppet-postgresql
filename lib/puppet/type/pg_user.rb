@@ -8,53 +8,38 @@ Puppet::Type.newtype(:pg_user) do
     desc "The name of the user/role"
   end
 
-  newproperty(:password) do
+  newparam(:password) do
 		desc "The password for the user/role"
   end
 
-  newproperty(:createdb) do
+  newparam(:createdb) do
     desc "Is the user allowed to create databases."
 
     defaultto :false
-
-    newvalue(:true)
-    newvalue(:false)
   end
 
-  newproperty(:inherit) do
+  newparam(:inherit) do
     desc "Inherit privileges of roles this user/role is a member of."
 
     defaultto :true
-
-    newvalue(:true)
-    newvalue(:false)
   end
 
-  newproperty(:login) do
+  newparam(:login) do
     desc "Can the user/role/ login?"
 
     defaultto :true
-
-    newvalue(:true)
-    newvalue(:false)
   end
 
-  newproperty(:createrole) do
+  newparam(:createrole) do
     desc "Can the user/role create other users/roles?"
 
     defaultto :false
-
-    newvalue(:true)
-    newvalue(:false)
   end
 
-  newproperty(:superuser) do
+  newparam(:superuser) do
     desc "Is the user/role a superuser?"
 
     defaultto :false
-
-    newvalue(:true)
-    newvalue(:false)
   end
 
 end
