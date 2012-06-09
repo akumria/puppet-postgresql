@@ -5,6 +5,7 @@ Puppet::Type.type(:pg_user).provide(:debian_postgresql) do
   confine :operatingsystem => [:debian, :ubuntu]
 
   optional_commands :psql => 'psql'
+  optional_commands :su => 'su'
 
   def create
     return false
@@ -15,7 +16,7 @@ Puppet::Type.type(:pg_user).provide(:debian_postgresql) do
   end
 
   def exists?
-    not psql("psql", "-c", "select 1 from pg_role where rolname = '%s'" % @resource.value(:name)).empty?
+    not su("-", "postgres", "-c", "psql -c \"select 1 from pg_roles where rolname = '%s'\"" % @resource.value(:name)).empty?
   end
 
 end
