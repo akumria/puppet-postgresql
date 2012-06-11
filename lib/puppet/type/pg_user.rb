@@ -1,6 +1,6 @@
 # This has to be a separate type to enable collecting
 Puppet::Type.newtype(:pg_user) do
-  @doc = "Manage a database user/role."
+  @doc = "Manage a Postgresql database user/role."
 
   ensurable
 
