@@ -9,7 +9,7 @@ Puppet::Type.newtype(:pg_user) do
   end
 
   newparam(:password) do
-		desc "The password for the user/role"
+    desc "The password for the user/role"
   end
 
   newparam(:createdb) do

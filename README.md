@@ -34,7 +34,7 @@ Listen on a specific post / IP address
 Create a user
 -------------
 
-	Actually this create a role in the database cluster
+Actually this creates a role in the database cluster
 
 	class postgresql::user { 'pguser':
 		superuser => false,
