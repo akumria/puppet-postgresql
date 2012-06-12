@@ -16,7 +16,15 @@ Puppet::Type.type(:pg_user).provide(:debian_postgresql) do
   end
 
   def exists?
-    not su("-", "postgres", "-c", "psql --quiet -A -t -c \"select 1 from pg_roles where rolname = '%s';\"" % @resource.value(:name))
+    su_output = su("-", "postgres", "-c", "psql --quiet -A -t -c \"select 1 from pg_roles where rolname = '%s';\"" % @resource.value(:name))
+    return false if su_output.length == 0
+    su_output.each do |line|
+      if line == "1\n"
+        return true
+      else
+        return false
+      end
+    end
   end
 
 end
