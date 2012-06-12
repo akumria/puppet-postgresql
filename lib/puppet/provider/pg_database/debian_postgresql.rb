@@ -1,6 +1,6 @@
 Puppet::Type.type(:pg_database).provide(:debian_postgresql) do
 
-  desc "Manage users for a postgres database cluster"
+  desc "Manage databases for a postgres database cluster"
 
   defaultfor :operatingsystem => [:debian, :ubuntu]
 
