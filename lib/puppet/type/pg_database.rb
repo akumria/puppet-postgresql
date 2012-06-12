@@ -8,16 +8,16 @@ Puppet::Type.newtype(:pg_database) do
     desc "The name of the database."
   end
 
-  newparam(:encoding) do
-    desc "The character set to use for the database"
-
-    defaultto :UTF8
-  end
-
   newparam(:owner) do
     desc "The owner of the database"
 
     defaultto :postgres
+  end
+
+  newparam(:encoding) do
+    desc "The character set encoding to use for the database"
+
+    defaultto :UTF8
   end
 
 end
