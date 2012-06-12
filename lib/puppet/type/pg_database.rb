@@ -11,7 +11,7 @@ Puppet::Type.newtype(:pg_database) do
   newparam(:charset) do
     desc "The character set to use for the database"
 
-    defaultto :utf8
+    defaultto :UTF8
   end
 
   newparam(:owner) do
