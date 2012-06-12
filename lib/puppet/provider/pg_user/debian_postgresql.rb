@@ -12,7 +12,7 @@ Puppet::Type.type(:pg_user).provide(:debian_postgresql) do
   end
 
   def destroy
-    fail('not yet done')
+    su("-", "postgres", "-c", "dropuser %s" % [ @resource.value(:name) ])
   end
 
   def exists?
