@@ -14,4 +14,10 @@ Puppet::Type.newtype(:pg_database) do
     newvalue(/^\S+$/)
   end
 
+  newparam(:owner) do
+    desc "The owner of the database"
+    defaultto :postgres
+    newvalue(/^\S+$/)
+  end
+
 end
