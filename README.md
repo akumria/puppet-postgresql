@@ -36,19 +36,33 @@ Create a user
 
 Actually this creates a role in the database cluster
 
-	class postgresql::user { 'pguser':
-		superuser => false,
-		password  => 'pgpassword',
+	pg_user {'pguser':
+		password => 'pgpassword',
+		ensure   => present,
 	}
 
 
 Create a database
 -----------------
 
-	class postgresql::db { 'pgdb':
+This creates a database and adds in a dependancy relationship to the user
+
+	pg_database {'pgdb':
 		owner    => 'pguser',
-		encoding => 'UTF-8',
+		require  => Pg_user['pguser'],
+		ensure   => present,
 	}
+
+You can also specify both the locale and encoding of a database. The default, for English, should be fine though.
+
+	pg_database {'pgdb':
+		owner    => 'pguser',
+		encoding => 'UTF8',
+		locale   => 'de_DE.UTF-8',
+		require  => Pg_user['pguser'],
+		ensure   => present,
+	}
+
 
 
 Contributors
