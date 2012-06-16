@@ -1,5 +1,5 @@
 define postgresql::db (
-    $owner,
+    $owner = $name,
     $password,
     $encoding = 'UTF8',
     $locale = 'en_GB.UTF-8',
