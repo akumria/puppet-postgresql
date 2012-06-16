@@ -31,6 +31,26 @@ Listen on a specific post / IP address
 		port   => 5432
 	}
 
+To create a database owned by a user
+
+    postgresql::db { 'myuser':
+        password => 'mypassword',
+    }
+
+This will create `myuser` and then create a database called `myuser`
+which will owned by `myuser`. You can override the default locale and
+encoding and, if required, specify a different owner. For example:
+
+    postgresql::db { 'mydatabase':
+        owner    => 'myuser',
+        password => 'mypassword',
+        locale   => 'en_AU.UTF-8',
+        encoding => 'C',
+    }
+
+
+Read on, if your specific setup does not within this (admittedly simple) framework.
+
 Create a user
 -------------
 
