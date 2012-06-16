@@ -57,8 +57,8 @@ Create a user
 Actually this creates a role in the database cluster
 
 	pg_user {'pguser':
-		password => 'pgpassword',
 		ensure   => present,
+		password => 'pgpassword',
 	}
 
 
@@ -68,19 +68,19 @@ Create a database
 This creates a database and adds in a dependancy relationship to the user
 
 	pg_database {'pgdb':
+		ensure   => present,
 		owner    => 'pguser',
 		require  => Pg_user['pguser'],
-		ensure   => present,
 	}
 
 You can also specify both the locale and encoding of a database. The default, for English, should be fine though.
 
 	pg_database {'pgdb':
+		ensure   => present,
 		owner    => 'pguser',
 		encoding => 'UTF8',
 		locale   => 'de_DE.UTF-8',
 		require  => Pg_user['pguser'],
-		ensure   => present,
 	}
 
 
