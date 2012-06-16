@@ -1,6 +1,6 @@
 define postgresql::db (
-    $owner = $name,
     $password,
+    $owner = $name,
     $encoding = 'UTF8',
     $locale = 'en_GB.UTF-8',
 ) {
