@@ -49,7 +49,7 @@ encoding and, if required, specify a different owner. For example:
     }
 
 
-Read on, if your specific setup does not within this (admittedly simple) framework.
+Read on, if your specific setup does not fall within this (admittedly simple) framework.
 
 Create a user
 -------------
