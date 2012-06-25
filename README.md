@@ -64,6 +64,19 @@ is a member of.
 		password => 'pgpassword',
 	}
 
+You can also modify other attributes like whether the user can create
+databases (`createdb`), create other roles (`createrole`) or is the
+superuser (`superuser`).
+
+For example:
+
+    pg_user {'mighty_pguser':
+        ensure     => present,
+        password   => 'themightone',
+        createdb   => true,
+        createrole => true,
+    }
+
 
 Create a database
 -----------------
