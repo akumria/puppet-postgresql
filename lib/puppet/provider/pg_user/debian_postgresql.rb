@@ -29,7 +29,7 @@ Puppet::Type.type(:pg_user).provide(:debian_postgresql) do
         stm = stm + " noinherit"
     end
 
-    if @resource.value(:createrole) = true
+    if @resource.value(:createrole) == true
         stm = stm + " createrole"
     else
         stm = stm + " nocreaterole"
