@@ -17,16 +17,16 @@ Puppet::Type.type(:pg_user).provide(:debian_postgresql) do
         stm = stm + " nocreatedb"
     end
 
-    if @resource.value(:inherit) == true
-        stm = stm + " inherit"
-    else
+    if @resource.value(:inherit) == false
         stm = stm + " noinherit"
+    else
+        stm = stm + " inherit"
     end
 
-    if @resource.value(:login) == true
-        stm = stm + " login"
-    else
+    if @resource.value(:login) == false
         stm = stm + " nologin"
+    else
+        stm = stm + " login"
     end
 
     if @resource.value(:createrole) == true
