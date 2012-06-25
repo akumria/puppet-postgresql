@@ -1,5 +1,5 @@
 name    'akumria-postgresql'
-version '0.9.3'
+version '0.9.5'
 source 'UNKNOWN'
 author 'akumria'
 license 'GNU General Public License, Version 3+'
