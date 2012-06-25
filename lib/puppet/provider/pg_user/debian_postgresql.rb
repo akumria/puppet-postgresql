@@ -17,28 +17,28 @@ Puppet::Type.type(:pg_user).provide(:debian_postgresql) do
         stm = stm + " nocreatedb"
     end
 
-    if @resource.value(:login) == true
-        stm = stm + " login"
-    else
-        stm = stm + " nologin"
-    end
-
-    if @resource.value(:superuser) == true
-        stm = stm + " superuser"
-    else
-        stm = stm + " nosuperuser"
-    end
-
     if @resource.value(:inherit) == true
         stm = stm + " inherit"
     else
         stm = stm + " noinherit"
     end
 
+    if @resource.value(:login) == true
+        stm = stm + " login"
+    else
+        stm = stm + " nologin"
+    end
+
     if @resource.value(:createrole) == true
         stm = stm + " createrole"
     else
         stm = stm + " nocreaterole"
+    end
+
+    if @resource.value(:superuser) == true
+        stm = stm + " superuser"
+    else
+        stm = stm + " nosuperuser"
     end
 
     su("-", "postgres", "-c", "psql -c \"%s\"" % stm)
