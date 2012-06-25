@@ -89,6 +89,7 @@ Contributors
 ------------
 
  * [Anand Kumria](https://github.com/akumria) ([@akumria](https://twitter.com/akumria))
+ * [Federico Maggi](https://github.com/phretor)
 
 
 Copyright and License
