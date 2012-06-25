@@ -101,6 +101,13 @@ you can also specify both the locale and encoding of a database.
 	}
 
 
+Notes
+-----
+
+This module will not (yet) update either the user or database once they have
+been initially created. i.e. changing the `login` permission of a user does not work.
+Nor does changing the locale of an existing database.
+
 
 Contributors
 ------------
