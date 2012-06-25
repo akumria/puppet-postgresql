@@ -49,12 +49,15 @@ encoding and, if required, specify a different owner. For example:
     }
 
 
-Read on, if your specific setup does not fall within this (admittedly simple) framework.
+Read on, if your specific setup does not fall within this
+ (admittedly simple) framework.
 
 Create a user
 -------------
 
-Actually this creates a role in the database cluster
+This creates a role in the database cluster, by default the user
+is able to login and will inherit the permissions of any groups it
+is a member of.
 
 	pg_user {'pguser':
 		ensure   => present,
@@ -65,7 +68,7 @@ Actually this creates a role in the database cluster
 Create a database
 -----------------
 
-This creates a database and adds in a dependancy relationship to the user
+This creates a database and adds a dependancy relationship to the user
 
 	pg_database {'pgdb':
 		ensure   => present,
@@ -73,7 +76,8 @@ This creates a database and adds in a dependancy relationship to the user
 		require  => Pg_user['pguser'],
 	}
 
-You can also specify both the locale and encoding of a database. The default, for English, should be fine though.
+The default is UTF-8 and en_GB.UTF-8 , for English. If required,
+you can also specify both the locale and encoding of a database.
 
 	pg_database {'pgdb':
 		ensure   => present,
