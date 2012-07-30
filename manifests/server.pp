@@ -1,5 +1,6 @@
 class postgresql::server (
   $server_package = $postgresql::params::server_package,
+  $locale = $postgresql::params::locale,
   $version = $postgresql::params::version,
   $listen = $postgresql::params::listen_address,
   $port = $postgresql::params::port
