@@ -18,6 +18,11 @@ To install the server
 
 	class {'postgresql::server': }
 
+By default, the system-wide locale is en_GB.UTF-8. If you need to change 
+this (due to that locale not being installed or available):
+
+        class { 'postgresql::server': locale => 'en_US.UTF-8' }
+
 Again, a particular version
 
 	class {'postgresql::server':

@@ -1,4 +1,5 @@
 class postgresql::params {
+  $locale = 'en_GB.UTF-8'
   case $::operatingsystem {
     /(Ubuntu|Debian)/: {
       $version = '9.1'
