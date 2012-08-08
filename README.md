@@ -38,6 +38,18 @@ Listen on a specific post / IP address
 		port   => 5432
 	}
 
+To allow a remote host to connect to the server, now that you are listening
+on the Internet.
+
+    class {'postgresql::server':
+        listen => ['192.168.0.1', ],
+        port   => 5432,
+        acls   => ['host all all 192.168.0.2/32 md5', ],
+    }
+
+Refer to the (pg_hba.conf docs)[http://www.postgresql.org/docs/devel/static/auth-pg-hba-conf.html] for
+the specifics of what each possible ACL field can be set to.
+
 To create a database owned by a user
 
     postgresql::db { 'myuser':
