@@ -47,7 +47,7 @@ on the Internet.
         acls   => ['host all all 192.168.0.2/32 md5', ],
     }
 
-Refer to the (pg_hba.conf docs)[http://www.postgresql.org/docs/devel/static/auth-pg-hba-conf.html] for
+Refer to the [pg_hba.conf docs](http://www.postgresql.org/docs/devel/static/auth-pg-hba-conf.html) for
 the specifics of what each possible ACL field can be set to.
 
 To create a database owned by a user
