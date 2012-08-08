@@ -2,7 +2,7 @@ define postgresql::db (
     $password,
     $owner = $name,
     $encoding = 'UTF8',
-    $locale = 'en_GB.UTF-8',
+    $locale = 'en_US.UTF-8',
 ) {
 
     pg_user {$owner:

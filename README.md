@@ -18,10 +18,12 @@ To install the server
 
 	class {'postgresql::server': }
 
-By default, the system-wide locale is en_GB.UTF-8. If you need to change 
-this (due to that locale not being installed or available):
+By default, the system-wide locale is assumed to be en_US.UTF-8. If the
+locale is not installed or available, you can specify an alternative:
 
-        class { 'postgresql::server': locale => 'en_US.UTF-8' }
+    class { 'postgresql::server':
+        locale => 'es_ES.UTF-8' 
+    }
 
 Again, a particular version
 
@@ -94,7 +96,7 @@ This creates a database and adds a dependancy relationship to the user
 		require  => Pg_user['pguser'],
 	}
 
-The default is UTF-8 and en_GB.UTF-8 , for English. If required,
+The default is UTF-8 and en_US.UTF-8 , for English. If required,
 you can also specify both the locale and encoding of a database.
 
 	pg_database {'pgdb':
