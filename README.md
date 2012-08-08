@@ -22,7 +22,7 @@ By default, the system-wide locale is assumed to be en_US.UTF-8. If the
 locale is not installed or available, you can specify an alternative:
 
     class { 'postgresql::server':
-        locale => 'es_ES.UTF-8' 
+        locale => 'es_ES.UTF-8',
     }
 
 Again, a particular version
@@ -35,7 +35,7 @@ Listen on a specific post / IP address
 
 	class {'postgresql::server':
 		listen => ['192.168.0.1', ],
-		port   => 5432
+		port   => 5432,
 	}
 
 To allow a remote host to connect to the server, now that you are listening
@@ -91,7 +91,7 @@ For example:
 
     pg_user {'mighty_pguser':
         ensure     => present,
-        password   => 'themightone',
+        password   => 'themightyone',
         createdb   => true,
         createrole => true,
     }
