@@ -121,6 +121,7 @@ Contributors
 
  * [Anand Kumria](https://github.com/akumria) ([@akumria](https://twitter.com/akumria))
  * [Federico Maggi](https://github.com/phretor)
+ * [Joe Topjian](https://github.com/jtopjian)
 
 
 Copyright and License
