@@ -123,7 +123,7 @@ Contributors
  * [Federico Maggi](https://github.com/phretor)
  * [Joe Topjian](https://github.com/jtopjian)
  * [Stephan Hochdörfer](https://github.com/shochdoerfer)
-
+ * [Marcello Barnaba](https://github.com/vjt)
 
 Copyright and License
 ---------------------

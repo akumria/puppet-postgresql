@@ -3,8 +3,8 @@ class postgresql::server (
   $locale = $postgresql::params::locale,
   $version = $postgresql::params::version,
   $listen = $postgresql::params::listen_address,
-  $port = $postgresql::params::port
-
+  $port = $postgresql::params::port,
+  $acl = []
 ) inherits postgresql::params {
 
   package { "postgresql-server-$version":
