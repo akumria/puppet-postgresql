@@ -136,6 +136,7 @@ Contributors
  * [Joe Topjian](https://github.com/jtopjian)
  * [Stephan Hochdörfer](https://github.com/shochdoerfer)
  * [Marcello Barnaba](https://github.com/vjt)
+ * [Ramón Cahenzli](https://github.com/psy-q)
 
 Copyright and License
 ---------------------
