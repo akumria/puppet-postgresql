@@ -83,6 +83,8 @@ Read on, if your specific setup does not fall within this
 Create a user
 -------------
 
+You must [enable pluginsync](http://docs.puppetlabs.com/guides/plugins_in_modules.html#enabling-pluginsync) on your server and client to use these custom types.
+
 This creates a role in the database cluster, by default the user
 is able to login and will inherit the permissions of any groups it
 is a member of.
@@ -108,6 +110,8 @@ For example:
 
 Create a database
 -----------------
+
+You must [enable pluginsync](http://docs.puppetlabs.com/guides/plugins_in_modules.html#enabling-pluginsync) on your server and client to use these custom types.
 
 This creates a database and adds a dependancy relationship to the user
 
