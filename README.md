@@ -67,6 +67,15 @@ encoding and, if required, specify a different owner. For example:
         encoding => 'C',
     }
 
+A common scenario is installing PostGIS, and then having a database created with those features enabled.
+Postgresql does this with the concept of database templates. By default `template0` is used as that
+allows us to override the locale and encoding if required. To create a database from a different template:
+
+    postgresql::db { 'mynextdb':
+        owner    => 'anotheruser',
+        password => 'anotherpass',
+        template => 'template_postgis',
+    }
 
 Read on, if your specific setup does not fall within this
  (admittedly simple) framework.
@@ -108,8 +117,10 @@ This creates a database and adds a dependancy relationship to the user
 		require  => Pg_user['pguser'],
 	}
 
-The default is UTF-8 and en_US.UTF-8 , for English. If required,
+The default is `UTF-8` and `en_US.UTF-8` for English. If required,
 you can also specify both the locale and encoding of a database.
+
+As well, you can specify the [base template](http://www.postgresql.org/docs/devel/static/manage-ag-templatedbs.html)
 
 	pg_database {'pgdb':
 		ensure   => present,
@@ -117,7 +128,9 @@ you can also specify both the locale and encoding of a database.
 		encoding => 'UTF8',
 		locale   => 'de_DE.UTF-8',
 		require  => Pg_user['pguser'],
+		template => 'template1',
 	}
+
 
 
 Notes
