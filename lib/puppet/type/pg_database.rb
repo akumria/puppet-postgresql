@@ -26,4 +26,10 @@ Puppet::Type.newtype(:pg_database) do
 	defaultto :'en_US.UTF-8'
   end
 
+  newparam(:template) do
+    desc "The default template to be used when creating the database. Defaults to 'template0'"
+
+	defaultto :'template0'
+  end
+
 end

@@ -8,7 +8,7 @@ Puppet::Type.type(:pg_database).provide(:debian_postgresql) do
   optional_commands :su => 'su'
 
   def create
-    su("-", "postgres", "-c", "createdb -T template0 -E %s -l %s -O %s %s" % [ @resource.value(:encoding), @resource.value(:locale), @resource.value(:owner), @resource.value(:name) ])
+    su("-", "postgres", "-c", "createdb -T %s -E %s -l %s -O %s %s" % [ @resource.value(:template), @resource.value(:encoding), @resource.value(:locale), @resource.value(:owner), @resource.value(:name) ])
   end
 
   def destroy

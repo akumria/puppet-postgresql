@@ -3,6 +3,7 @@ define postgresql::db (
     $owner = $name,
     $encoding = 'UTF8',
     $locale = 'en_US.UTF-8',
+    $template = 'template0',
 ) {
 
     pg_user {$owner:
@@ -16,5 +17,6 @@ define postgresql::db (
         require     => Pg_user[$owner],
         encoding    => $encoding,
         locale      => $locale,
+        template    => $template,
     }
 }
