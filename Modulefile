@@ -1,9 +1,9 @@
 name    'akumria-postgresql'
-version '1.0.0'
+version '1.1.0'
 source 'UNKNOWN'
 author 'akumria'
 license 'GNU General Public License, Version 3+'
-summary 'Install and configure postgresql database system'
+summary 'Install and configure the Postgresql database system'
 description "Postgresql is a database system which is broadly compatible with SQL
 		standards. You can setup users and configure databases using this module.
 "
