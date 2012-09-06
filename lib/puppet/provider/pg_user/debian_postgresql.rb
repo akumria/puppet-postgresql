@@ -8,8 +8,12 @@ Puppet::Type.type(:pg_user).provide(:debian_postgresql) do
   optional_commands :su => 'su'
 
   def create
-    stm = "create role %s encrypted password '%s'" % [\
-        @resource.value(:name), @resource.value(:password) ]
+
+    if @resource.value(:password)
+      password_string = " encrypted password '%s'" % @resource.value(:password)
+    end
+
+    stm = "create role %s#{password_string}" % @resource.value(:name)
 
     if @resource.value(:createdb) == true
         stm = stm + " createdb"
