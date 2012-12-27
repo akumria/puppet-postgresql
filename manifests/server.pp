@@ -18,7 +18,6 @@ class postgresql::server (
     ensure      => running,
     hasstatus   => false,
     hasrestart  => true,
-    provider    => 'debian',
     subscribe   => Package["postgresql-server-$version"],
   }
 
