@@ -131,7 +131,15 @@ As well, you can specify the [base template](http://www.postgresql.org/docs/deve
 		template => 'template1',
 	}
 
+SSL Notes
+---------
 
+SSL support is disabled by default. If you enable it, ensure that you have the appropriate
+server and root certificates, keys and revocations files already in place otherwise Postgresql
+will not start.
+
+Additionally note that only Postgresql 9.2 (and later) allow you to configure the [SSL files](http://www.postgresql.org/docs/9.2/static/ssl-tcp.html)
+that the server will look for. [Prior versions](http://www.postgresql.org/docs/9.1/static/ssl-tcp.html) have hardcoded defaults.
 
 Notes
 -----
