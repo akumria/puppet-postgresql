@@ -82,7 +82,23 @@ unix_socket_directory = '/var/run/postgresql'		# (change requires restart)
 # - Security and Authentication -
 
 #authentication_timeout = 1min		# 1s-600s
-ssl = true				# (change requires restart)
+ssl = <%= @ssl %>				# (change requires restart)
+# If SSL is configured and Postgres 9.2+ is used,
+# you can specify the files for the used for the
+# server and root certificates, keys and revocation lists.
+<% if @ssl_ca_file -%>
+ssl_ca_file   = $ssl_ca_file     # default is 'root.crt'
+<% end -%>
+<% if @ssl_cert_file -%>
+ssl_cert_file = $ssl_cert_file   # default is 'server.crt'
+<% end -%>
+<% if @ssl_crl_file -%>
+ssl_crl_file  = $ssl_crl_file    # default is 'root.crl'
+<% end -%>
+<% if @ssl_key_file -%>
+ssl_key_file  = $ssl_key_file    # default is 'server.key'
+<% end -%>
+
 #ssl_ciphers = 'ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH'	# allowed SSL ciphers
 					# (change requires restart)
 #ssl_renegotiation_limit = 512MB	# amount of data between renegotiations

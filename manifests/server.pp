@@ -4,6 +4,11 @@ class postgresql::server (
   $version = $postgresql::params::version,
   $listen = $postgresql::params::listen_address,
   $port = $postgresql::params::port,
+  $ssl = $postgresql::params::ssl,
+  $ssl_ca_file   = $postgresql::params::ssl_ca_file,
+  $ssl_cert_file = $postgresql::params::ssl_cert_file,
+  $ssl_crl_file  = $postgresql::params::ssl_crl_file,
+  $ssl_key_file  = $postgresql::params::ssl_key_file,
   $acl = []
 ) inherits postgresql::params {
 
