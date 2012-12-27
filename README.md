@@ -153,6 +153,7 @@ Contributors
  * [Stephan Hochdörfer](https://github.com/shochdoerfer)
  * [Marcello Barnaba](https://github.com/vjt)
  * [Ramón Cahenzli](https://github.com/psy-q)
+ * [Bert Hajee](https://github.com/hajee)
 
 Copyright and License
 ---------------------
