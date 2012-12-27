@@ -140,6 +140,9 @@ This module will not (yet) update either the user or database once they have
 been initially created. i.e. changing the `login` permission of a user does not work.
 Nor does changing the locale of an existing database.
 
+With Puppet version less than 3.0, you must [enable pluginsync](http://docs.puppetlabs.com/guides/plugins_in_modules.html#enabling-pluginsync),
+so that the custom types are sent to each client.
+
 
 Contributors
 ------------
