@@ -93,6 +93,9 @@ is a member of.
 		password => 'pgpassword',
 	}
 
+To create users without passwords (such as for peer/ident authentication),
+simply leave off the 'password' key.
+
 You can also modify other attributes like whether the user can create
 databases (`createdb`), create other roles (`createrole`) or is the
 superuser (`superuser`).
