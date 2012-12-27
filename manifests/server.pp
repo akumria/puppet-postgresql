@@ -9,6 +9,7 @@ class postgresql::server (
   $ssl_cert_file = $postgresql::params::ssl_cert_file,
   $ssl_crl_file  = $postgresql::params::ssl_crl_file,
   $ssl_key_file  = $postgresql::params::ssl_key_file,
+  $preacl = [],
   $acl = []
 ) inherits postgresql::params {
 

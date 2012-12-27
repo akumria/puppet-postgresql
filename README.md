@@ -44,11 +44,12 @@ on the Internet.
     class {'postgresql::server':
         listen => ['192.168.0.1', ],
         port   => 5432,
-        acl   => ['host all all 192.168.0.2/32 md5', ],
+        acl    => ['host all all 192.168.0.2/32 md5', ],
     }
 
 Refer to the [pg_hba.conf docs](http://www.postgresql.org/docs/devel/static/auth-pg-hba-conf.html) for
-the specifics of what each possible ACL field can be set to.
+the specifics of what each possible ACL field can be set to. In some situations you made need to insert
+the ACL in front of any existing one. The variable `preacl` exists for this purpose.
 
 To create a database owned by a user
 

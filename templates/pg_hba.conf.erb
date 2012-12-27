@@ -85,6 +85,10 @@
 local   all             postgres                                ident
 
 # TYPE  DATABASE        USER            ADDRESS                 METHOD
+# site-specific pre access control list
+<% preacl.each do |entry| -%>
+<%= entry %>
+<% end -%>
 
 # "local" is for Unix domain socket connections only
 local   all             all                                     ident
