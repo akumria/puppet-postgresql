@@ -5,6 +5,7 @@ define postgresql::db (
     $locale = 'en_US.UTF-8',
     $template = 'template0',
 ) {
+    require postgresql::server
 
     pg_user {$owner:
         ensure      => present,

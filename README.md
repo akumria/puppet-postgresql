@@ -154,6 +154,7 @@ Contributors
  * [Marcello Barnaba](https://github.com/vjt)
  * [Ramón Cahenzli](https://github.com/psy-q)
  * [Bert Hajee](https://github.com/hajee)
+ * [Patrick Hemmer](https://github.com/phemmer)
 
 Copyright and License
 ---------------------
