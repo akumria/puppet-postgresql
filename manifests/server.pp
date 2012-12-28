@@ -10,22 +10,45 @@ class postgresql::server (
   $ssl_crl_file  = $postgresql::params::ssl_crl_file,
   $ssl_key_file  = $postgresql::params::ssl_key_file,
   $preacl = [],
-  $acl = []
+  $acl = [],
+  $manage_service = true
 ) inherits postgresql::params {
+
+  file { 'postgresql-server-policyrc.d':
+    ensure => present,
+    name   => '/usr/sbin/policy-rc.d',
+    owner  => root,
+    group  => root,
+    mode   => '0755',
+    source => "puppet:///modules/${module_name}/postgresql-policyrc.d"
+  }
+
+  if ($manage_service) {
+
+    service { "postgresql-system-$version":
+      name        => 'postgresql',
+      enable      => true,
+      ensure      => running,
+      hasstatus   => false,
+      hasrestart  => true,
+      provider    => 'debian',
+      subscribe   => Package["postgresql-server-$version"],
+    }
+
+    $notify_service = Service["postgresql-system-$version"]
+    $package_require = []
+
+  } else {
+
+    $notify_service = []
+    $package_require = File['postgresql-server-policyrc.d']
+
+  }
 
   package { "postgresql-server-$version":
     name    => sprintf("%s-%s", $server_package, $version),
     ensure  => present,
-  }
-
-  service { "postgresql-system-$version":
-    name        => 'postgresql',
-    enable      => true,
-    ensure      => running,
-    hasstatus   => false,
-    hasrestart  => true,
-    provider    => 'debian',
-    subscribe   => Package["postgresql-server-$version"],
+    require => $package_require,
   }
 
   file { "postgresql-server-config-$version":
@@ -36,7 +59,7 @@ class postgresql::server (
     group   => 'postgres',
     mode    => '0644',
     require => Package["postgresql-server-$version"],
-    notify  => Service["postgresql-system-$version"],
+    notify  => $notify_service,
   }
 
   file { "postgresql-server-hba-config-$version":
@@ -47,7 +70,7 @@ class postgresql::server (
     group   => 'postgres',
     mode    => '0640',
     require => Package["postgresql-server-$version"],
-    notify  => Service["postgresql-system-$version"],
+    notify  => $notify_service,
   }
 
 }
