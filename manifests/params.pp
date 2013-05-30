@@ -14,6 +14,11 @@ class postgresql::params {
       $server_package = 'postgresql'
       $listen_address = 'localhost'
       $port = 5432
+
+      $service_name = $::lsbdistcodename ? {
+        'wheezy' => 'postgresql',
+        default  => "postgresql-system-${version}",
+      }
     }
     default: {
       fail("Unsupported platform: ${::operatingsystem}")

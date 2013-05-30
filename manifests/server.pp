@@ -1,5 +1,6 @@
 class postgresql::server (
   $server_package = $postgresql::params::server_package,
+  $service_name = $postgresql::params::service_name,
   $locale = $postgresql::params::locale,
   $version = $postgresql::params::version,
   $listen = $postgresql::params::listen_address,
@@ -25,7 +26,7 @@ class postgresql::server (
 
   if ($manage_service) {
 
-    service { "postgresql-system-$version":
+    service { $service_name:
       name        => 'postgresql',
       enable      => true,
       ensure      => running,
@@ -35,7 +36,7 @@ class postgresql::server (
       subscribe   => Package["postgresql-server-$version"],
     }
 
-    $notify_service = Service["postgresql-system-$version"]
+    $notify_service = Service[$service_name]
     $package_require = []
 
   } else {
