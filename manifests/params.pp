@@ -1,6 +1,7 @@
+# = Class postgresql::params
+#
 class postgresql::params {
   $locale        = 'en_US.UTF-8'
-
   $ssl           = false
   $ssl_ca_file   = undef  # the default is 'root.crt'
   $ssl_cert_file = undef  # the default is 'server.crt'
@@ -20,8 +21,10 @@ class postgresql::params {
         default  => "postgresql-system-${version}",
       }
     }
+
     default: {
       fail("Unsupported platform: ${::operatingsystem}")
     }
   }
 }
+

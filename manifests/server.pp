@@ -1,20 +1,21 @@
+# = Class postgresql::server
+#
 class postgresql::server (
   $server_package = $postgresql::params::server_package,
-  $service_name = $postgresql::params::service_name,
-  $locale = $postgresql::params::locale,
-  $version = $postgresql::params::version,
-  $listen = $postgresql::params::listen_address,
-  $port = $postgresql::params::port,
-  $ssl = $postgresql::params::ssl,
-  $ssl_ca_file   = $postgresql::params::ssl_ca_file,
-  $ssl_cert_file = $postgresql::params::ssl_cert_file,
-  $ssl_crl_file  = $postgresql::params::ssl_crl_file,
-  $ssl_key_file  = $postgresql::params::ssl_key_file,
-  $preacl = [],
-  $acl = [],
+  $service_name   = $postgresql::params::service_name,
+  $locale         = $postgresql::params::locale,
+  $version        = $postgresql::params::version,
+  $listen         = $postgresql::params::listen_address,
+  $port           = $postgresql::params::port,
+  $ssl            = $postgresql::params::ssl,
+  $ssl_ca_file    = $postgresql::params::ssl_ca_file,
+  $ssl_cert_file  = $postgresql::params::ssl_cert_file,
+  $ssl_crl_file   = $postgresql::params::ssl_crl_file,
+  $ssl_key_file   = $postgresql::params::ssl_key_file,
+  $preacl         = [],
+  $acl            = [],
   $manage_service = true
 ) inherits postgresql::params {
-
   file { 'postgresql-server-policyrc.d':
     ensure => present,
     name   => '/usr/sbin/policy-rc.d',
@@ -25,53 +26,49 @@ class postgresql::server (
   }
 
   if ($manage_service) {
-
     service { $service_name:
+      ensure      => running,
       name        => 'postgresql',
       enable      => true,
-      ensure      => running,
       hasstatus   => false,
       hasrestart  => true,
       provider    => 'debian',
-      subscribe   => Package["postgresql-server-$version"],
+      subscribe   => Package["postgresql-server-${version}"],
     }
 
     $notify_service = Service[$service_name]
     $package_require = []
-
   } else {
-
     $notify_service = []
     $package_require = File['postgresql-server-policyrc.d']
-
   }
 
-  package { "postgresql-server-$version":
-    name    => sprintf("%s-%s", $server_package, $version),
+  package { "postgresql-server-${version}":
     ensure  => present,
+    name    => sprintf('%s-%s', $server_package, $version),
     require => $package_require,
   }
 
-  file { "postgresql-server-config-$version":
-    name    => "/etc/postgresql/$version/main/postgresql.conf",
+  file { "postgresql-server-config-${version}":
     ensure  => present,
+    name    => "/etc/postgresql/${version}/main/postgresql.conf",
     content => template('postgresql/postgresql.conf.erb'),
     owner   => 'postgres',
     group   => 'postgres',
     mode    => '0644',
-    require => Package["postgresql-server-$version"],
+    require => Package["postgresql-server-${version}"],
     notify  => $notify_service,
   }
 
-  file { "postgresql-server-hba-config-$version":
-    name    => "/etc/postgresql/$version/main/pg_hba.conf",
+  file { "postgresql-server-hba-config-${version}":
     ensure  => present,
+    name    => "/etc/postgresql/${version}/main/pg_hba.conf",
     content => template('postgresql/pg_hba.conf.erb'),
     owner   => 'postgres',
     group   => 'postgres',
     mode    => '0640',
-    require => Package["postgresql-server-$version"],
+    require => Package["postgresql-server-${version}"],
     notify  => $notify_service,
   }
-
 }
+
