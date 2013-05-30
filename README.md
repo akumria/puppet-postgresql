@@ -168,6 +168,7 @@ Contributors
  * [Bert Hajee](https://github.com/hajee)
  * [Patrick Hemmer](https://github.com/phemmer)
  * [Marcello Barnaba](https://github.com/vjt)
+ * [Tom De Vylder](https://github.com/arioch) ([@tomdevylder](https://twitter.com/tomdevylder))
 
 Copyright and License
 ---------------------
