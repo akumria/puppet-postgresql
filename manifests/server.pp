@@ -49,6 +49,11 @@ class postgresql::server (
     require => $package_require,
   }
 
+  package { "postgresql-server-dev-${version}":
+    ensure  => present,
+    require => $package_require,
+  }
+
   file { "postgresql-server-config-${version}":
     ensure  => present,
     name    => "/etc/postgresql/${version}/main/postgresql.conf",
