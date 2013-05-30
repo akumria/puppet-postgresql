@@ -1,4 +1,4 @@
-# = Define postgresql::db
+# == Define postgresql::db
 #
 define postgresql::db (
   $password,

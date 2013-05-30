@@ -1,4 +1,4 @@
-# = Class postgresql::params
+# == Class postgresql::params
 #
 class postgresql::params {
   $locale        = 'en_US.UTF-8'

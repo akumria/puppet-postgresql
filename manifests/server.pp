@@ -1,4 +1,4 @@
-# = Class postgresql::server
+# == Class postgresql::server
 #
 class postgresql::server (
   $server_package = $postgresql::params::server_package,
