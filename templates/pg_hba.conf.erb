@@ -86,7 +86,7 @@ local   all             postgres                                ident
 
 # TYPE  DATABASE        USER            ADDRESS                 METHOD
 # site-specific pre access control list
-<% preacl.each do |entry| -%>
+<% @preacl.each do |entry| -%>
 <%= entry %>
 <% end -%>
 
@@ -98,7 +98,7 @@ host    all             all             127.0.0.1/32            md5
 host    all             all             ::1/128                 md5
 
 # site-specific access control list
-<% acl.each do |entry| -%>
+<% @acl.each do |entry| -%>
 <%= entry %>
 <% end -%>
 
