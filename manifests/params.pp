@@ -1,6 +1,7 @@
+# == Class postgresql::params
+#
 class postgresql::params {
   $locale        = 'en_US.UTF-8'
-
   $ssl           = false
   $ssl_ca_file   = undef  # the default is 'root.crt'
   $ssl_cert_file = undef  # the default is 'server.crt'
@@ -9,14 +10,25 @@ class postgresql::params {
 
   case $::operatingsystem {
     /(Ubuntu|Debian)/: {
-      $version = '9.1'
       $client_package = 'postgresql-client'
       $server_package = 'postgresql'
       $listen_address = 'localhost'
       $port = 5432
+
+      $version = $::lsbdistcodename ? {
+        'squeeze' => '8.4',
+        default   => '9.1',
+      }
+
+      $service_name = $::lsbdistcodename ? {
+        'wheezy' => 'postgresql',
+        default  => "postgresql-system-${version}",
+      }
     }
+
     default: {
       fail("Unsupported platform: ${::operatingsystem}")
     }
   }
 }
+
